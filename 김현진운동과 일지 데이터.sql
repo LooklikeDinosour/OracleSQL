@@ -1,0 +1,47 @@
+CREATE TABLE GIS_WORKOUT (
+       WORKOUT_NAME VARCHAR2(50) CONSTRAINT WORKOUTS_PK PRIMARY KEY,
+       BODY_PART VARCHAR2(50) CONSTRAINT WORKOUT_BP_NN NOT NULL,
+       WORKOUT_EXPLAIN VARCHAR2(1000) CONSTRAINT WORKOUT_EX_NN NOT NULL,
+       WORKOUT_REPS NUMBER(3) CONSTRAINT WORKOUT_REPS_CK CHECK (WORKOUT_REPS > 0)
+       );
+DROP TABLE GIS_WORKOUT;       
+       
+CREATE TABLE GIS_TRAINING_DIARY (
+       DAY_N NUMBER CONSTRAINT TD_DAY_N_PK PRIMARY KEY,
+       TD_DATE DATE DEFAULT SYSDATE,
+       MEMBER_CODE VARCHAR2(30) REFERENCES GIS_MYPAGE(MEMBER_CODE),
+       WORKOUT_NAME VARCHAR2(50) CONSTRAINT WORKOUT_NAME_NNN NOT NULL,
+       BODY_PART VARCHAR2(50) CONSTRAINT WORKOUT_BP_NNN NOT NULL,
+       WORKOUT_TIME NUMBER(2) CONSTRAINT TD_TIME_NN NOT NULL,
+       TD_FEEDBACK VARCHAR2(100) CONSTRAINT TD_FEEDBACK_NN NOT NULL, 
+       DIFFICULTY VARCHAR2(10) CONSTRAINT TD_DIFFICULTY NOT NULL
+);
+
+SELECT * FROM
+GIS_TRAINING_DIARY;
+
+INSERT INTO GIS_WORKOUT 
+VALUES ('풀업', '상체', '두 손을 어깨 넓이 만큼 벌려서 철봉을 잡은 뒤에 당겨주세요.', 5);
+
+INSERT INTO GIS_WORKOUT 
+VALUES ('딥스', '상체', '양 철봉을 지지한 뒤에 푸시업하듯이 팔을 굽혀주세요,', 15);
+
+INSERT INTO GIS_WORKOUT 
+VALUES ('푸쉬업', '상체', '푸쉽업아럼니아럼니횜ㄴㅇ러ㅏ민아럼ㄴ;ㅣㅇ라ㅓㅁ니;아러민ㅇ', 15);
+
+INSERT INTO GIS_WORKOUT 
+VALUES ('싯업', '상체', 'ㅁ낭러민아럼닝라ㅓㅁ닝ㄻ넝리ㅏㅁㄴㅁㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄹ', 50);
+
+INSERT INTO GIS_WORKOUT 
+VALUES ('스쿼트', '하체', 'ㅏㅣ미ㅏ얼;ㅣㅁ낭럼니ㅏㅇ러미;낭럼니아럼;니아럼ㄴ;ㅣㅏㅇ러ㅡ민ㅇ라ㅓ민아럼ㄴ;ㅣㅇ라ㅓㅁ니아럼;ㅣㄴ아럼;ㅣㄴㅇㄹ', 20);
+
+INSERT INTO GIS_WORKOUT
+VALUES ('버피', '하체', '만얿재러미낭러민아ㅓㅁㄴㅇ;ㅣ먼이ㅏㅁㄴ어림낭러ㅣ마어리;ㅁ나어리;ㅁㄴㅇ러민ㅇㅁㄴㅇㄻㄴㅇㄹ', 20);
+
+INSERT INTO GIS_WORKOUT
+VALUES ('플랭크', '하체', '망너림ㄴ아럼ㄴ의라ㅓㅁㄴ이ㅏ모ㅠㅎㅁ닝라ㅓㅁㄴ일먼ㅇ;ㅣㄹ벚대럼ㄴ이ㅏㄻ너이;ㅏㅗ힘ㄴㅇ;ㄹ;ㅁ닝라ㅓ미;낭럽재', 30);
+
+INSERT INTO GIS_WORKOUT
+VALUES ('브릿지', '하체', '만얼미암이ㅏㄴ이러미;아럼ㄴ;ㅣㅇ라홰뱢곀ㅌ츠푸ㅐ베ㅜ페ㅐㅂ얼', 50);
+
+SELECT * FROM GIS_WORKOUT;
